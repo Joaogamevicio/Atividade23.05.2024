@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Adivinhação</title>
+</head>
+<body>
+    <p id="numero"></p>
+
+    <script>
+        function jogoDeAdivinhacao(numeroSecreto) {
+            let tentativas = 0;
+
+            while (true) {
+                const tentativa = parseInt(prompt("Jogador 2, tente adivinhar o número (entre 1 e 10):"));
+                tentativas++;
+
+                if (tentativa === numeroSecreto) {
+                    document.getElementById("numero").innerText = `Parabéns! Você acertou o número ${numeroSecreto} em ${tentativas} tentativas.`;
+                    break;
+                } else {
+                    document.getElementById("numero").innerText = "Tente novamente!";
+                }
+            }
+        }
+
+        const numeroEscolhido = parseInt(prompt("Jogador 1, escolha um número entre 1 e 10:"));
+        alert("Agora é a vez do Jogador 2.");
+        jogoDeAdivinhacao(numeroEscolhido);
+    </script>
+</body>
+</html>

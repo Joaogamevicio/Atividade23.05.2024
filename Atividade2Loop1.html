@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade</title>
+</head>
+<body>
+    <h1>Informe seus dados</h1>
+    <div id="dados"></div> 
+    <!--div = para exibir os dados de todas as pessoas-->
+
+    <script>
+        function Documentos() {
+            let continuar = 'S';
+            while (continuar.toUpperCase() === 'S') {
+                let nome = prompt("Digite um nome:");
+                let endereco = prompt("Digite o seu endereço:");
+                let cidade = prompt("Digite a sua cidade:");
+                let UF = prompt("Digite o seu UF:");
+                let CEP = prompt("Digite o seu CEP:");
+                let telefone = prompt("Digite o seu telefone:");
+                let CPF = prompt("Digite o seu CPF:");
+                let RG = prompt("Digite o seu RG:");
+                let nascimento = prompt("Digite a sua data de nascimento:");
+                let escolaridade = prompt("Digite sua escolaridade:");
+                let formacao = prompt("Digite o curso em que se formou:");
+
+                let pessoa = document.createElement('div');
+                pessoa.innerHTML = `
+                    <h2>${nome}</h2>
+                    <p>Endereço: ${endereco}</p>
+                    <p>Cidade: ${cidade}</p>
+                    <p>UF: ${UF}</p>
+                    <p>CEP: ${CEP}</p>
+                    <p>Telefone: ${telefone}</p>
+                    <p>CPF: ${CPF}</p>
+                    <p>RG: ${RG}</p>
+                    <p>Data de Nascimento: ${nascimento}</p>
+                    <p>Escolaridade: ${escolaridade}</p>
+                    <p>Formação: ${formacao}</p>
+                `;
+                document.getElementById("dados").appendChild(pessoa);
+
+                continuar = prompt("Deseja escrever os documentos de outra pessoa (S/N):");
+                if (continuar.toUpperCase() === 'N') {
+                    alert("Paramos por aqui");
+                } else if (continuar.toUpperCase() !== 'S') {
+                    alert("Opção inválida, por favor, digite S para Sim ou N para Não.");
+                    continuar = 'S';
+                }
+            }
+        }
+
+        Documentos();
+    </script>
+</body>
+</html>
+ 

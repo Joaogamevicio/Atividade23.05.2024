@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade2</title>
+</head>
+
+<body>
+    <h1>Informe seus dados</h1>
+    <div id="dados"></div>
+    <!--div = para exibir os dados de todas as pessoas-->
+
+    <script>
+        function Documentos() {
+            let continuar = 'S';
+            while (continuar.toUpperCase() === 'S') {
+                let nome = prompt("Digite um nome:");
+                let escola = prompt("Digite o nome da escola:");
+                let descricao = prompt("Descrição do conteúdo:");
+                let frequencia = parseFloat(prompt("Digite quantos vezes você veio no ano (Máximo 365):"));
+                let N1 = parseFloat(prompt("Digite sua primeira nota:"));
+                let N2 = parseFloat(prompt("Digite sua segunda nota:"));
+
+                let pessoa = document.createElement('div');
+                pessoa.innerHTML = `
+                    <h2>${nome}</h2>
+                    <p>Escola: ${escola}</p>
+                    <p>Descrição: ${descricao}</p>
+                    <p>Frequência: ${frequencia}</p>
+                    <p>Nota 1: ${N1}</p>
+                    <p>Nota 2: ${N2}</p>
+                    <p id="aprovacao-frequencia"></p>
+                    <p id="aprovacao-nota"></p>
+                `;
+                document.getElementById("dados").appendChild(pessoa);
+
+                let aprovacaoFrequencia = document.getElementById("aprovacao-frequencia");
+                let aprovacaoNota = document.getElementById("aprovacao-nota");
+
+                if (frequencia >= 182) {
+                    aprovacaoFrequencia.textContent = "Você foi aprovado em frequência.";
+                } else {
+                    aprovacaoFrequencia.textContent = "Você foi reprovado em frequência.";
+                }
+
+                if ((N1 + N2) / 2 >= 7) {
+                    aprovacaoNota.textContent = "Você foi aprovado em nota.";
+                } else {
+                    aprovacaoNota.textContent = "Você foi reprovado em nota.";
+                }
+
+                continuar = prompt("Deseja escrever os dados de outra pessoa (S/N):");
+                if (continuar.toUpperCase() === 'N') {
+                    alert("Paramos por aqui");
+                } else if (continuar.toUpperCase() !== 'S') {
+                    alert("Opção inválida, por favor, digite S para Sim ou N para Não.");
+                    continuar = 'S';
+                }
+            }
+        }
+        Documentos();
+    </script>
+</body>
+
+</html>

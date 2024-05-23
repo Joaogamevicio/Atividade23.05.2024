@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaração de Imposto de Renda</title>
+</head>
+
+<body>
+    <h1>Informe seus dados</h1>
+    <div id="dados"></div>
+
+    <script>
+        function DeclaracaoImposto() {
+            let continuar = 'S';
+            while (continuar.toUpperCase() === 'S') {
+                let nome = prompt("Digite seu nome:");
+                let cpf = prompt("Digite seu CPF (11 dígitos):");
+                let rendaAnual = parseFloat(prompt("Digite sua renda anual:"));
+                let numDependentes = parseInt(prompt("Digite o número de dependentes:"));
+
+                const descontoPorDependente = 110.00;
+                const descontoTotal = numDependentes * descontoPorDependente;
+
+                let contribuinte = document.createElement('div');
+                contribuinte.innerHTML = `
+                    <h2>${nome}</h2>
+                    <p>CPF: ${cpf}</p>
+                    <p>Renda Anual: R$ ${rendaAnual.toFixed(2)}</p>
+                    <p>Número de Dependentes: ${numDependentes}</p>
+                    <p>Desconto Total: R$ ${descontoTotal.toFixed(2)}</p>
+                `;
+                document.getElementById("dados").appendChild(contribuinte);
+
+                continuar = prompt("Deseja inserir os dados de outra pessoa (S/N):");
+                if (continuar.toUpperCase() === 'N') {
+                    alert("Paramos por aqui");
+                } else if (continuar.toUpperCase() !== 'S') {
+                    alert("Opção inválida, por favor, digite S para Sim ou N para Não.");
+                    continuar = 'S';
+                }
+            }
+        }
+        DeclaracaoImposto();
+    </script>
+</body>
+
+</html>
